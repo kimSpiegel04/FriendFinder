@@ -1,0 +1,72 @@
+<!-- 1. Your survey should have 10 questions of your choosing. Each answer should be on a scale of 1 to 5 based on how much the user agrees or disagrees with a question. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FriendFinder: Survey</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Survey Questions</h1>
+        <hr>
+        <form>
+            <h4>About You</h4>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="link">Link to Photo Image</label>
+                <input type="text" class="form-control" id="link" required>
+            </div>
+
+            <hr>
+            <div id='questions-here'>
+                <!-- *append questions here -->
+            </div>
+
+            <hr>
+            
+
+            <br>
+            <button type="submit" class="btn btn-primary"><span class="fa fa-user"></span> Submit</button>
+        </form>
+
+
+        <hr>
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/kimSpiegel04/FriendFinder">GitHub Repo</a>
+            </div>
+        </footer>
+
+    </div>
+
+
+</body>
+</html>
+
+<script>
+
+    questionArray = ['You can make friends very quickly.', 'You would rather stay at home than go out.', 'You are often misunderstood but your friends love you.', 'You are openly affectionate.', 'You think with your heart rather than your head.', 'You are a morning person.', 'You spend a lot of time on your appearance.', "You're not great at expressing your emotions.", 'People trust you with their secrets.', 'You wear your heart on your sleeve.'];
+
+    for(var i=0;i<questionArray.length;i++){
+        var question = $('<div class="question-group">');
+
+        question.append($('<div>').html('<h4>Question '+[i+1]+'</h4>        <p style="font-size: 20px">'+questionArray[i]+'</p> <form class="form-group"><select class="custom-select my-1 mr-sm-2" id="q'+ [i+1] +'" style="width:200px;" required> <option selected>Select an Option</option><option value="1">1 (Strongly Disagree)</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 (Strongly Agree)</option></select></form>'));
+
+        $('#questions-here').append(question);
+    }
+
+
+</script>
